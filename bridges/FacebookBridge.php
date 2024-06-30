@@ -191,7 +191,7 @@ class FacebookBridge extends BridgeAbstract
 
         defaultLinkTo($html, substr(self::URI, 0, strlen(self::URI) - 1));
 
-        $this->groupName = $this->extractGroupName($html,self::URI);
+        $this->groupName = $this->extractGroupName($html,$this->getInput('g'));
 
         $posts = $html->find('div.story_body_container')
             or returnServerError('Failed finding posts!');
