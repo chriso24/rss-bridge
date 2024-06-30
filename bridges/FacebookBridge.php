@@ -183,7 +183,7 @@ class FacebookBridge extends BridgeAbstract
 
         $html = getSimpleHTMLDOM($touchURI, $header);
 
-        Debug::log($html)
+        Debug::log($html);
 
         if (!$this->isPublicGroup($html)) {
             returnClientError('This group is not public! RSS-Bridge only supports public groups!');
@@ -199,7 +199,7 @@ class FacebookBridge extends BridgeAbstract
         foreach ($posts as $post) {
             $item = [];
 
-            Debug::log($post)
+            Debug::log($post);
             
             $item['uri'] = $this->extractGroupPostURI($post);
             $item['title'] = $this->extractGroupPostTitle($post);
