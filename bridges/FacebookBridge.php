@@ -271,8 +271,8 @@ class FacebookBridge extends BridgeAbstract
 
     private function extractGroupName($html, $path)
     {
-        Debug::log('a[href="' . $path . '/"]');
-        $ogtitle = $html->find('a[href="' . $path . '/"]', 0)
+        Debug::log('span>a[href="' . $path . '/"]');
+        $ogtitle = $html->find('span>a[href="' . $path . '/"]', 0)
             or returnServerError('Unable to find group title!');
 
         return html_entity_decode($ogtitle->plaintext, ENT_QUOTES);
