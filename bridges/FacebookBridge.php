@@ -191,7 +191,7 @@ class FacebookBridge extends BridgeAbstract
 
         defaultLinkTo($html, substr(self::URI, 0, strlen(self::URI) - 1));
 
-        $this->groupName = $this->extractGroupName($html);
+        $this->groupName = $this->extractGroupName($html,self::URI);
 
         $posts = $html->find('div.story_body_container')
             or returnServerError('Failed finding posts!');
@@ -269,9 +269,9 @@ class FacebookBridge extends BridgeAbstract
         return $title->plaintext !== 'Log in to Facebook | Facebook';
     }
 
-    private function extractGroupName($html)
+    private function extractGroupName($html, $path)
     {
-        $ogtitle = $html->find('._de1', 0)
+        $ogtitle = $html->find('a[href="' . $path . '/"]', 0)
             or returnServerError('Unable to find group title!');
 
         return html_entity_decode($ogtitle->plaintext, ENT_QUOTES);
